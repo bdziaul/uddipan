@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>উদ্যোগ উন্নয়ন - লিংক পোর্টাল</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Noto Sans Bengali", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      text-align: center;
+    }
+
+    header {
+      background: #fff;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      color: #b91c1c;
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
+
+    .box {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 30px 10px;
+      transition: 0.3s;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .box h2 {
+      color: #444;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .box a {
+      color: #c11b1b;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    footer {
+      background: #fff;
+      padding: 15px;
+      font-size: 14px;
+      color: #555;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+
+    select {
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+
+    .zone {
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://uddipan.org/wp-content/uploads/2021/01/Uddipan-Logo.png" alt="UDDIPAN Logo" height="70"><br>
+  <h1>উদ্যোগ উন্নয়ন - ওয়েব লিংক পোর্টাল</h1>
+</header>
+
+<div class="container">
+  <div class="box">
+    <h2>অটোমেশন লিংক</h2>
+    <div class="zone">
+      <select id="zoneSelect">
+        <option value="">আপনার জোন নির্বাচন করুন</option>
+        <option value="http://172.16.11.55/uddipanonline/">৪৫. কুমিল্লা জোন (লোকাল)</option>
+        <option value="http://103.134.88.55/uddipanonline/">৪৫. কুমিল্লা জোন (রিমোট)</option>
+      </select>
+      <br><br>
+      <button onclick="openZone()">ওপেন করুন</button>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>ই-মেইল / ওয়েবমেইল</h2>
+    <a href="https://mail.uddipan.org:8443/" target="_blank">লগইন করুন</a>
+  </div>
+
+  <div class="box">
+    <h2>মানবসম্পদ (HR)</h2>
+    <a href="https://uddipan.org/hr" target="_blank">Work Time, Attendance, Payroll</a>
+  </div>
+
+  <div class="box">
+    <h2>অনলাইন সাপোর্ট</h2>
+    <a href="https://uddipan.org/support" target="_blank">Bank Info, Transaction, Report</a>
+  </div>
+
+  <div class="box">
+    <h2>আইটি মনিটরিং</h2>
+    <a href="https://uddipan.org/it" target="_blank">Support Request, Report</a>
+  </div>
+
+  <div class="box">
+    <h2>কেস লগ</h2>
+    <a href="https://uddipan.org/case" target="_blank">Legal Case Report Dashboard</a>
+  </div>
+</div>
+
+<footer>
+  © ২০২৫ উদ্যোগ উন্নয়ন (UDDIPAN) | Developed by Ziaul - MFCIB
+</footer>
+
+<script>
+  function openZone() {
+    const url = document.getElementById("zoneSelect").value;
+    if (url) {
+      window.open(url, "_blank");
+    } else {
+      alert("দয়া করে প্রথমে জোন নির্বাচন করুন!");
+    }
+  }
+</script>
+
+</body>
+</html>

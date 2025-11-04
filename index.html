@@ -6,9 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       font-family: "Noto Sans Bengali", sans-serif;
@@ -20,8 +18,12 @@
 
     header {
       background: #fff;
-      padding: 20px 0;
+      padding: 15px 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
 
     header img {
@@ -31,7 +33,25 @@
     header h1 {
       color: #b91c1c;
       margin: 10px 0 0 0;
-      font-size: 28px;
+      font-size: 26px;
+      flex: 1;
+    }
+
+    .info-box {
+      text-align: right;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .time {
+      font-weight: bold;
+      color: #c11b1b;
+      font-size: 15px;
+    }
+
+    .visitor {
+      margin-top: 4px;
+      font-size: 14px;
     }
 
     .container {
@@ -107,12 +127,17 @@
       margin-top: 40px;
     }
 
-    @media(max-width: 500px){
+    @media(max-width: 600px){
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
       header h1 {
         font-size: 22px;
       }
-      .box h2 {
-        font-size: 18px;
+      .info-box {
+        text-align: center;
+        margin-top: 8px;
       }
     }
   </style>
@@ -122,6 +147,10 @@
 <header>
   <img src="http://103.12.205.37/itmonitoringtools/images/logo.png" alt="Welcome To UDDIPAN Weblink">
   <h1>উদ্দীপন - ওয়েব লিংক পোর্টাল</h1>
+  <div class="info-box">
+    <div class="time" id="liveTime">সময় লোড হচ্ছে...</div>
+    <div class="visitor">ভিজিটর সংখ্যা: <span id="visitorCount">0</span></div>
+  </div>
 </header>
 
 <div class="container">
@@ -158,12 +187,12 @@
 
   <div class="box">
     <h2>অনলাইন সাপোর্ট</h2>
-    <a href="http://103.12.205.37/uddipanonline/" target="_blank"> Transaction, Asset Entry, Rm Monitoring, Report</a>
+    <a href="http://103.12.205.37/uddipanonline/" target="_blank">Transaction, Asset Entry, Rm Monitoring, Report</a>
   </div>
 
   <div class="box">
     <h2>আইটি মনিটরিং</h2>
-    <a href="http://103.12.205.37/itmonitoringtools/" target="_blank">Support Request-Purchase-Servising From, Report</a>
+    <a href="http://103.12.205.37/itmonitoringtools/" target="_blank">Support Request-Purchase-Servising Form, Report</a>
   </div>
 
   <div class="box">
@@ -173,7 +202,7 @@
 
   <div class="box">
     <h2>উদ্দীপন শাখা ও স্টাফ</h2>
-    <a href="https://shorturl.at/8sYxF" target="_blank">Branch Address, e-Mail, Staff Number, Whstsapp Number</a>
+    <a href="https://shorturl.at/8sYxF" target="_blank">Branch Address, e-Mail, Staff Number, Whatsapp Number</a>
   </div>
 
   <div class="box">
@@ -192,6 +221,28 @@
 </footer>
 
 <script>
+  // === Live Time & Date ===
+  function updateTime() {
+    const now = new Date();
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const date = now.toLocaleDateString('bn-BD', options);
+    const time = now.toLocaleTimeString('bn-BD');
+    document.getElementById('liveTime').innerHTML = `${date} | ${time}`;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  // === Visitor Counter ===
+  let count = localStorage.getItem('visitorCount');
+  if (!count) {
+    count = 1;
+  } else {
+    count = parseInt(count) + 1;
+  }
+  localStorage.setItem('visitorCount', count);
+  document.getElementById('visitorCount').textContent = count;
+
+  // === Zone Open Function ===
   function openZone() {
     const url = document.getElementById("zoneSelect").value;
     if (url) {
@@ -204,10 +255,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-

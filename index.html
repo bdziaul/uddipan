@@ -149,7 +149,7 @@
   <h1>উদ্দীপন - ওয়েব লিংক পোর্টাল</h1>
   <div class="info-box">
     <div class="time" id="liveTime">সময় লোড হচ্ছে...</div>
-    <div class="visitor">ভিজিটর সংখ্যা: <span id="visitorCount">0</span></div>
+    <div class="visitor">ভিজিটর সংখ্যা: <span id="visitorCount">লোড হচ্ছে...</span></div>
   </div>
 </header>
 
@@ -232,15 +232,21 @@
   setInterval(updateTime, 1000);
   updateTime();
 
-  // === Visitor Counter ===
-  let count = localStorage.getItem('visitorCount');
-  if (!count) {
-    count = 1;
-  } else {
-    count = parseInt(count) + 1;
+  // === Server-Based Visitor Counter ===
+  const counterElement = document.getElementById('visitorCount');
+
+  async function updateVisitorCount() {
+    try {
+      const response = await fetch('https://api.countapi.xyz/hit/bdziaul.github.io/UDDIPAN-WebLink');
+      const data = await response.json();
+      counterElement.textContent = data.value;
+    } catch (error) {
+      counterElement.textContent = "Error";
+      console.error("Visitor counter error:", error);
+    }
   }
-  localStorage.setItem('visitorCount', count);
-  document.getElementById('visitorCount').textContent = count;
+
+  updateVisitorCount();
 
   // === Zone Open Function ===
   function openZone() {
@@ -255,4 +261,3 @@
 
 </body>
 </html>
-

@@ -33,14 +33,36 @@ header {
 }
 header img { height: 70px; }
 
-/* Header Title & link underline animation */
-header h1, .link-title {
+/* Header Title underline animation */
+header h1 {
+  color: #008000;
+  margin: 0 15px;
+  font-size: 38px;
+  font-family: 'Times New Roman', serif;
+  flex: 1;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  cursor: default;
+  position: relative;
+  display: inline-block;
+}
+header h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 3px;
+  background-color: currentColor;
+  transition: width 1s ease;
+}
+header h1:hover::after { width: 100%; }
+
+/* Link underline animation for all .link-title */
+.link-title {
   position: relative;
   display: inline-block;
   text-decoration: none;
-  cursor: pointer;
 }
-header h1::after,
 .link-title::after {
   content: "";
   position: absolute;
@@ -51,17 +73,7 @@ header h1::after,
   background-color: currentColor;
   transition: width 1s ease;
 }
-header h1:hover::after,
 .link-title:hover::after { width: 100%; }
-
-header h1 {
-  color: #008000;
-  margin: 0 15px;
-  font-size: 38px;
-  font-family: 'Times New Roman', serif;
-  flex: 1;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
 
 /* Info box */
 .info-box { text-align: right; font-size: 14px; color: #444; }
@@ -101,7 +113,7 @@ header h1 {
 }
 .no-click:hover { text-decoration: underline; }
 
-/* Box span details Dark Red (except no-click) */
+/* Box span details Dark Red */
 .box span:not(.no-click) { color: #8B0000; }
 
 /* Dropdown & Button */

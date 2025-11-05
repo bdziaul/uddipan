@@ -216,4 +216,40 @@ footer a.mfcib { color: #008000; text-decoration: none; font-weight: bold; }
 
   <div class="box">
     <h2><a href="https://everify.bdris.gov.bd/?locale=bn" target="_blank" class="title-link">জন্মনিবন্ধন</a></h2>
-    <span>
+    <span>Customer Birth Certificate Check</span>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 
+  <a href="https://www.uddipan.org" class="uddipan">UDDIPAN</a> | 
+  Developed by 
+  <a href="https://www.facebook.com/ziaulz" class="mfcib">MFCIB</a> Team
+</footer>
+
+<script>
+function updateTime() {
+  const now = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const date = now.toLocaleDateString('bn-BD', options);
+  const time = now.toLocaleTimeString('bn-BD');
+  document.getElementById('liveTime').innerHTML = `${date} | ${time}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+let count = localStorage.getItem('visitorCount');
+count = count ? parseInt(count)+1 : 1;
+localStorage.setItem('visitorCount', count);
+document.getElementById('visitorCount').textContent = count;
+
+function openZone() {
+  const url = document.getElementById("zoneSelect").value;
+  if(url) window.open(url,"_blank");
+  else alert("দয়া করে প্রথমে আপনার জোন নির্বাচন করুন!");
+}
+</script>
+
+</body>
+</html>

@@ -98,9 +98,9 @@ header h1 {
   color: #ff6600;
 }
 
-/* Box span details (Dark Red) */
-.box span {
-  color: #8B0000;  /* Dark Red */
+/* শুধুমাত্র link নয় এমন span টেক্সটের জন্য (Dark Red) */
+.box span:not(.no-click) {
+    color: #8B0000;  /* Dark Red */
 }
 
 /* Box link details */
@@ -172,7 +172,7 @@ footer a:hover { color: #ff6600; }
 
   <!-- অটোমেশন লিংক -->
   <div class="box">
-    <h2> class="no-click">অটোমেশন লিংক</h2>
+    <h2><span class="no-click">অটোমেশন লিংক</span></h2>
     <div class="zone">
       <select id="zoneSelect">
         <option value="">আপনার জোন নির্বাচন করুন</option>
@@ -236,4 +236,3 @@ function openZone() {
 
 </body>
 </html>
-

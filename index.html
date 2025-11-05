@@ -18,7 +18,7 @@ body {
   padding-top: 120px;
 }
 
-/* ---------- Header ---------- */
+/* Header */
 header {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -31,9 +31,7 @@ header {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
 header img { height: 70px; }
-
 header h1 {
   color: #008000;
   margin: 0 15px;
@@ -43,16 +41,11 @@ header h1 {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-.info-box {
-  text-align: right;
-  font-size: 14px;
-  color: #444;
-}
-
+.info-box { text-align: right; font-size: 14px; color: #444; }
 .time { font-weight: bold; color: #c11b1b; font-size: 15px; }
 .visitor { margin-top: 4px; font-size: 14px; }
 
-/* ---------- Main Section ---------- */
+/* Main Section */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -62,7 +55,7 @@ header h1 {
   padding: 20px;
 }
 
-/* ---------- Box ---------- */
+/* Box */
 .box {
   background: #fff;
   border-radius: 16px;
@@ -76,28 +69,26 @@ header h1 {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* H2 Styles */
 .box h2 {
   font-size: 30px;
   margin-bottom: 10px;
   font-weight: 700;
 }
 
-/* Hoverable & colored title */
-.title-link, .title-nolink {
+/* অটোমেশন লিংক & হেডিং স্টাইল */
+.title-style {
   color: #0a4d9b;
+  font-size: 30px;
   font-weight: 700;
   text-decoration: none;
-  cursor: pointer;
 }
 
-.title-link:hover {
+.title-style:hover {
   text-decoration: underline;
+  color: #ff6600; /* Hover color */
 }
 
-.title-nolink:hover {
-  text-decoration: underline;
-  color: #ff6600;
+.title-nolink {
   cursor: default; /* Clickable না */
 }
 
@@ -109,15 +100,13 @@ header h1 {
   font-weight: bold;
   display: inline-block;
 }
-
 .box a:hover {
   text-decoration: underline;
   color: #ff6600;
 }
 
-/* ---------- Dropdown ---------- */
+/* Dropdown */
 .zone { margin: 12px 0; }
-
 select {
   padding: 8px 12px;
   border-radius: 6px;
@@ -126,7 +115,6 @@ select {
   width: 100%;
   max-width: 250px;
 }
-
 button {
   background: #c11b1b;
   color: #fff;
@@ -138,10 +126,9 @@ button {
   margin-top: 10px;
   transition: background 0.3s ease;
 }
-
 button:hover { background: #a11212; }
 
-/* ---------- Footer ---------- */
+/* Footer */
 footer {
   background: #fff;
   padding: 15px;
@@ -150,12 +137,11 @@ footer {
   box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
   margin-top: 40px;
 }
-
 footer a.uddipan { color: #008000; }
 footer a.mfcib { color: #008000; }
 footer a:hover { color: #ff6600; }
 
-/* ---------- Responsive ---------- */
+/* Responsive */
 @media(max-width:600px){
   header { flex-direction: column; text-align: center; }
   header h1 { font-size: 28px; margin:10px 0; }
@@ -177,7 +163,7 @@ footer a:hover { color: #ff6600; }
 <div class="container">
   <!-- অটোমেশন লিংক -->
   <div class="box">
-    <h2><span class="title-nolink">অটোমেশন লিংক</span></h2>
+    <h2><span class="title-style title-nolink">অটোমেশন লিংক</span></h2>
     <div class="zone">
       <select id="zoneSelect">
         <option value="">আপনার জোন নির্বাচন করুন</option>
@@ -197,44 +183,44 @@ footer a:hover { color: #ff6600; }
     </div>
   </div>
 
-  <!-- লিঙ্ক বক্সসমূহ -->
+  <!-- লিঙ্ক বক্স -->
   <div class="box">
-    <h2><a href="https://mail.uddipan.org:8443/" target="_blank" class="title-link">ই-মেইল / ওয়েবমেইল</a></h2>
+    <h2><a href="https://mail.uddipan.org:8443/" target="_blank" class="title-style">ই-মেইল / ওয়েবমেইল</a></h2>
     <a href="https://mail.uddipan.org:8443/" target="_blank">Please Identify Yourself : Username & Password</a>
   </div>
 
   <div class="box">
-    <h2><a href="http://103.134.88.46/hr" target="_blank" class="title-link">মানবসম্পদ (HR)</a></h2>
+    <h2><a href="http://103.134.88.46/hr" target="_blank" class="title-style">মানবসম্পদ (HR)</a></h2>
     <a href="http://103.134.88.46/hr" target="_blank">Work Time, Attendance, Leave, Employee Profile, Payroll</a>
   </div>
 
   <div class="box">
-    <h2><a href="http://103.12.205.37/uddipanonline/" target="_blank" class="title-link">অনলাইন সাপোর্ট</a></h2>
+    <h2><a href="http://103.12.205.37/uddipanonline/" target="_blank" class="title-style">অনলাইন সাপোর্ট</a></h2>
     <a href="http://103.12.205.37/uddipanonline/" target="_blank">Transaction, Asset Entry, Rm Monitoring, Report</a>
   </div>
 
   <div class="box">
-    <h2><a href="http://103.12.205.37/itmonitoringtools/" target="_blank" class="title-link">আইটি মনিটরিং</a></h2>
+    <h2><a href="http://103.12.205.37/itmonitoringtools/" target="_blank" class="title-style">আইটি মনিটরিং</a></h2>
     <a href="http://103.12.205.37/itmonitoringtools/" target="_blank">Support Request-Purchase-Servicing Form, Report</a>
   </div>
 
   <div class="box">
-    <h2><a href="http://103.12.205.37/CaseLog/" target="_blank" class="title-link">কেস লগ</a></h2>
+    <h2><a href="http://103.12.205.37/CaseLog/" target="_blank" class="title-style">কেস লগ</a></h2>
     <a href="http://103.12.205.37/CaseLog/" target="_blank">Legal Case Report Dashboard</a>
   </div>
 
   <div class="box">
-    <h2><a href="https://shorturl.at/8sYxF" target="_blank" class="title-link">উদ্দীপন শাখা ও স্টাফ</a></h2>
+    <h2><a href="https://shorturl.at/8sYxF" target="_blank" class="title-style">উদ্দীপন শাখা ও স্টাফ</a></h2>
     <a href="https://shorturl.at/8sYxF" target="_blank">Branch Address, e-Mail, Staff Number, Whatsapp Number</a>
   </div>
 
   <div class="box">
-    <h2><a href="https://nvs.mra.gov.bd/dashboard/" target="_blank" class="title-link">এনআইডি</a></h2>
+    <h2><a href="https://nvs.mra.gov.bd/dashboard/" target="_blank" class="title-style">এনআইডি</a></h2>
     <a href="https://nvs.mra.gov.bd/dashboard/" target="_blank">Customer NID Check</a>
   </div>
 
   <div class="box">
-    <h2><a href="https://everify.bdris.gov.bd/?locale=bn" target="_blank" class="title-link">জন্মনিবন্ধন</a></h2>
+    <h2><a href="https://everify.bdris.gov.bd/?locale=bn" target="_blank" class="title-style">জন্মনিবন্ধন</a></h2>
     <a href="https://everify.bdris.gov.bd/?locale=bn" target="_blank">Customer Birth Certificate Check</a>
   </div>
 </div>

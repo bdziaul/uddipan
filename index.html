@@ -88,7 +88,7 @@ header h1:hover{transform:translateY(-3px);}
 /* Box */
 .box{
   background:#fff;
-  border-radius:15px;
+  border-radius:18px;
   box-shadow:0 3px 10px rgba(0,0,0,0.1);
   padding:25px 18px;
   transition:all .3s ease;
@@ -263,26 +263,13 @@ count=count?parseInt(count)+1:1;
 localStorage.setItem('visitorCount',count);
 document.getElementById('visitorCount').textContent=count;
 
-// Open Zone
+// Open Zone (New Tab)
 function openZone(){
-  const url=document.getElementById("zoneSelect").value;
-  if(url) window.location.href=url;
+  const url = document.getElementById("zoneSelect").value;
+  if(url) window.open(url, '_blank'); // নতুন ট্যাবে খোলা
   else alert("দয়া করে প্রথমে আপনার জোন নির্বাচন করুন!");
 }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

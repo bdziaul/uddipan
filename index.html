@@ -38,7 +38,9 @@ header{
   z-index:1000;
   padding:10px 25px;
   display:flex;
-  align-items:center;
+  text-align:center !important; /* ✅ Center সবসময় নিশ্চিত */
+  display:block; /* Footer কে block হিসেবে ধরবে */
+  width:100%;
   justify-content:space-between;
   flex-wrap:wrap;
 }
@@ -287,6 +289,7 @@ function openZone(){
 
 </body>
 </html>
+
 
 
 

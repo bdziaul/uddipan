@@ -92,7 +92,7 @@ header h1:hover{
 .box h2{margin-bottom:10px;font-size:28px;}
 .box span:not(.no-click){color:#8B0000;font-size:18px;}
 
-/* Underline Animation */
+/* Underline Animation for normal links */
 .link-title{
   position:relative;
   text-decoration:none;
@@ -117,14 +117,37 @@ header h1:hover{
 }
 .link-title:hover{color:#ff6600;}
 
-/* অটোমেশন লিংক */
-.no-click{
+/* অটোমেশন লিংক ও পরিক্ষার ফলাফল - hover effect like other links */
+.no-click {
   font-size:28px;
   font-weight:700;
   color:#0a4d9b;
   cursor:default;
+  position:relative;
+  transition: color 0.3s ease;
 }
-.no-click:hover{text-decoration:underline;}
+
+/* Underline animation */
+.no-click::after {
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-5px;
+  width:100%;
+  height:3px;
+  background-color:currentColor;
+  transform:translateX(-50%) scaleX(0);
+  transform-origin:center;
+  transition: transform 0.4s ease;
+}
+
+.no-click:hover {
+  color:#ff6600; /* Hover color change */
+}
+
+.no-click:hover::after {
+  transform:translateX(-50%) scaleX(1); /* Underline grows from center */
+}
 
 /* Dropdown & Buttons */
 select{

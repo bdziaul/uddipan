@@ -89,19 +89,11 @@ header h1:hover{
   transform:translateY(-6px);
   box-shadow:0 10px 22px rgba(0,0,0,0.15);
 }
-
-/* Headline Font Size 32px */
-.box h2{
-  margin-bottom:10px;
-  font-size:32px; /* Updated from 28px */
-}
-
-/* Box span for description */
+.box h2{margin-bottom:10px;font-size:28px;}
 .box span:not(.no-click){color:#8B0000;font-size:18px;}
 
 /* Underline Animation for normal links */
 .link-title{
-  font-size:32px; /* Updated from 28px */
   position:relative;
   text-decoration:none;
   color:#0a4d9b;
@@ -125,9 +117,9 @@ header h1:hover{
 }
 .link-title:hover{color:#ff6600;}
 
-/* অটোমেশন লিংক ও পরীক্ষার ফলাফল - hover effect like other links */
+/* অটোমেশন লিংক ও পরিক্ষার ফলাফল - hover effect like other links */
 .no-click {
-  font-size:32px; /* Updated from 28px */
+  font-size:28px;
   font-weight:700;
   color:#0a4d9b;
   cursor:default;
@@ -150,11 +142,11 @@ header h1:hover{
 }
 
 .no-click:hover {
-  color:#ff6600; 
+  color:#ff6600; /* Hover color change */
 }
 
 .no-click:hover::after {
-  transform:translateX(-50%) scaleX(1); 
+  transform:translateX(-50%) scaleX(1); /* Underline grows from center */
 }
 
 /* Dropdown & Buttons */

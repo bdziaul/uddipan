@@ -61,10 +61,14 @@ header h1::after{
   transform-origin:center;
   transition:transform .5s ease;
 }
+/* Hover effect for header */
+header h1:hover{
+  transform:translateY(-3px) scale(1.05);
+}
 header h1:hover::after{
   transform:translateX(-50%) scaleX(1);
 }
-header h1:hover{transform:translateY(-3px);}
+
 .info-box{text-align:right;font-size:14px;color:#444;}
 .time{font-weight:bold;color:#c11b1b;font-size:15px;}
 .visitor{margin-top:4px;font-size:14px;}
@@ -91,23 +95,16 @@ header h1:hover{transform:translateY(-3px);}
   transform:translateY(-6px);
   box-shadow:0 10px 22px rgba(0,0,0,0.15);
 }
-.box h2{
-  margin-bottom:10px;
-  font-size:28px;
-  transition: all 0.3s ease;
-}
-.box h2:hover{
-  font-size:32px; /* Hover এ font বড় হবে */
-}
+.box h2{margin-bottom:10px;font-size:28px; transition: font-size 0.3s ease;}
 .box span:not(.no-click){color:#8B0000;font-size:18px;}
 
-/* Underline Animation */
+/* Underline Animation for links */
 .link-title{
   position:relative;
   text-decoration:none;
   color:#0a4d9b;
   font-weight:600;
-  transition:color .3s ease;
+  transition:color .3s ease, transform .3s ease;
 }
 .link-title::after{
   content:"";
@@ -126,14 +123,33 @@ header h1:hover{transform:translateY(-3px);}
 }
 .link-title:hover{color:#ff6600;}
 
-/* অটোমেশন লিংক */
+/* No-click hover for Font Increase & underline */
 .no-click{
   font-size:28px;
   font-weight:700;
   color:#0a4d9b;
   cursor:default;
+  position:relative;
+  transition: font-size .3s ease;
 }
-.no-click:hover{text-decoration:underline;}
+.no-click::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-3px;
+  width:100%;
+  height:3px;
+  background-color:currentColor;
+  transform:translateX(-50%) scaleX(0);
+  transform-origin:center;
+  transition:transform .4s ease;
+}
+.no-click:hover{
+  font-size:32px;
+}
+.no-click:hover::after{
+  transform:translateX(-50%) scaleX(1);
+}
 
 /* Dropdown & Button */
 select{
@@ -149,7 +165,7 @@ select{
 
 button{
   display: inline-block;
-  background:#66bb6a; /* হালকা সবুজ */
+  background:#66BB6A; /* lighter green */
   color:#fff;
   padding: 10px 12px;
   border:none;
@@ -174,7 +190,7 @@ footer{
   color:#555;
   box-shadow:0 -2px 6px rgba(0,0,0,0.1);
   margin-top:40px;
-  text-align:center;
+  text-align:center; /* Center footer text */
 }
 footer a.uddipan,footer a.mfcib{
   color:#008000;
@@ -191,7 +207,7 @@ footer a:hover{color:#ff6600;}
   .container {grid-template-columns:1fr;padding:9px;}
   .box {padding:14px 9px;font-size:13px;}
   select, button {width:100%;font-size:14px;}
-  body {padding-top:230px;}
+  body {padding-top:230px;} /* মোবাইলের জন্য header height adjust */
 }
 </style>
 </head>
@@ -202,7 +218,7 @@ footer a:hover{color:#ff6600;}
   <h1>UDDIPAN - Weblink Portal</h1>
   <div class="info-box">
     <div class="time" id="liveTime">সময় লোড হচ্ছে...</div>
-    <div class="visitor">ভিজিটের সংখ্যা: <span id="visitorCount">0</span></div>
+        <div class="visitor">ভিজিটের সংখ্যা: <span id="visitorCount">0</span></div>
   </div>
 </header>
 
@@ -244,7 +260,7 @@ footer a:hover{color:#ff6600;}
   <div class="box"><h2><a href="http://103.12.205.37/uddipanonline/" target="_blank" class="link-title">উদ্দীপন অনলাইন</a></h2><span>Asset, Budget, Transaction, OTP, Omni Support, RM Monitoring & Report</span></div>
   <div class="box"><h2><a href="http://103.12.205.37/dashboard/" target="_blank" class="link-title">উদ্দীপন ড্যাশবোর্ড</a></h2><span>MFP, Customer Feedback, Performer, Trend & Report</span></div>
   <div class="box"><h2><a href="http://103.12.205.37/itmonitoringtools/" target="_blank" class="link-title">আইটি মনিটরিং</a></h2><span>Support Request, Purchase, Servicing Form, Report</span></div>
-  <div class="box"><h2><a href="https://shorturl.at/8sYxF" target="_blank" class="link-title">উদ্দীপন শাখা ও কর্মকর্তা</a></h2><span>Branch Address, Email, Employee WhatsApp & Mobile Number</span></div>
+  <div class="box"><h2><a href="https://shorturl.at/8sYxF" target="_blank" class="link-title">উদ্দীপন শাখা ও কর্মকর্তাগণ</a></h2><span>Branch Address, Email, Employee WhatsApp & Mobile Number</span></div>
   <div class="box"><h2><a href="https://nvs.mra.gov.bd/dashboard/" target="_blank" class="link-title">জাতীয় পরিচয়পত্র</a></h2><span>Customer NID Check Is For MFCIB Team Only.</span></div>
   <div class="box"><h2><a href="https://everify.bdris.gov.bd/?locale=bn" target="_blank" class="link-title">জন্ম ও মৃত্যু নিবন্ধন</a></h2><span>Customer Birth Registration Record Verification</span></div>
   <div class="box"><h2><a href="https://ln.run/9aWBw" target="_blank" class="link-title">কাজের জন্য গুগল শিট</a></h2><span>MFCIB Verified/Reject Data List, Updating Many Types Of Work</span></div>
@@ -297,4 +313,3 @@ function openZone(){
 
 </body>
 </html>
-

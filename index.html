@@ -5,14 +5,8 @@
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/bdziaul/Login.php/main/login-logo.png">
-
-<!-- Apple Touch Icon (iOS) -->
 <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/bdziaul/Login.php/main/login-logo.png">
-
-<!-- Android / PWA Icons -->
 <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/bdziaul/Login.php/main/login-logo.png">
-
-<!-- Manifest -->
 <link rel="manifest" href="manifest.json">
 
 <title>UDDIPAN - Weblink</title>
@@ -26,7 +20,7 @@ body{
   background:linear-gradient(135deg,#f7fafc 0%,#eef2f7 100%);
   color:#333;
   text-align:center;
-  padding-top:110px;
+  padding-top:110px; /* header height adjust */
 }
 
 /* Header */
@@ -46,23 +40,31 @@ header img{height:80px;}
 header h1{
   font-family:'Times New Roman',serif;
   font-size:50px;
-  color:#008000;
-  cursor:default;
-  transition:all 0.3s ease;
+  background:linear-gradient(90deg,#008000,#00bfa5);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   text-shadow:1px 1px 2px rgba(0,0,0,0.15);
+  position:relative;
   display:inline-block;
-  padding:6px 12px;
-  border-radius:8px;
+  transition:transform .3s ease;
+  cursor:default;
 }
-
-/* Hover style like button */
-header h1:hover{
-  background:#4CAF50;
-  color:#fff;
-  box-shadow: 0 0 15px rgba(76,175,80,0.8);
-  transform: scale(1.05);
+header h1::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-6px;
+  width:100%;
+  height:4px;
+  background:linear-gradient(90deg,#008000,#00bfa5);
+  transform:translateX(-50%) scaleX(0);
+  transform-origin:center;
+  transition:transform .5s ease;
 }
-
+header h1:hover::after{
+  transform:translateX(-50%) scaleX(1);
+}
+header h1:hover{transform:translateY(-3px);}
 .info-box{text-align:right;font-size:14px;color:#444;}
 .time{font-weight:bold;color:#c11b1b;font-size:15px;}
 .visitor{margin-top:4px;font-size:14px;}
@@ -89,7 +91,14 @@ header h1:hover{
   transform:translateY(-6px);
   box-shadow:0 10px 22px rgba(0,0,0,0.15);
 }
-.box h2{margin-bottom:10px;font-size:28px;}
+.box h2{
+  margin-bottom:10px;
+  font-size:28px;
+  transition: all 0.3s ease;
+}
+.box h2:hover{
+  font-size:32px; /* Hover এ font বড় হবে */
+}
 .box span:not(.no-click){color:#8B0000;font-size:18px;}
 
 /* Underline Animation */
@@ -126,7 +135,7 @@ header h1:hover{
 }
 .no-click:hover{text-decoration:underline;}
 
-/* Dropdown & Buttons */
+/* Dropdown & Button */
 select{
   padding:8px 12px;
   border-radius:8px;
@@ -138,23 +147,21 @@ select{
   margin-bottom:10px;
 }
 
-/* Open Automation Button like Sign In */
-.open-btn {
+button{
   display: inline-block;
-  background: #4CAF50;
-  color: #fff;
+  background:#66bb6a; /* হালকা সবুজ */
+  color:#fff;
   padding: 10px 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 0 0 rgba(76,175,80,0);
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 0 0 rgba(76,175,80,0);
 }
-
-.open-btn:hover {
-  background: #43A047;
+button:hover{
+  background:#43A047;
   box-shadow: 0 0 15px rgba(76,175,80,0.8);
   transform: scale(1.05);
 }
@@ -167,7 +174,7 @@ footer{
   color:#555;
   box-shadow:0 -2px 6px rgba(0,0,0,0.1);
   margin-top:40px;
-  text-align:center; 
+  text-align:center;
 }
 footer a.uddipan,footer a.mfcib{
   color:#008000;
@@ -183,8 +190,8 @@ footer a:hover{color:#ff6600;}
   .info-box{text-align:center;margin-top:8px;}
   .container {grid-template-columns:1fr;padding:9px;}
   .box {padding:14px 9px;font-size:13px;}
-  select, .open-btn {width:100%;font-size:14px;}
-  body {padding-top:230px;} 
+  select, button {width:100%;font-size:14px;}
+  body {padding-top:230px;}
 }
 </style>
 </head>
@@ -215,7 +222,7 @@ footer a:hover{color:#ff6600;}
       <option value="http://172.16.11.45:7070/omni/index.do">৪৫. কুমিল্লা জোন</option>
       <option value="http://172.16.11.54:7070/omni/index.do">৫৪. পিরোজপুর জোন</option>
       <option value="http://172.16.11.53:7070/omni/index.do">৫৩. বরিশাল জোন</option>
-      <option value="https://bdziaul.github.io/chat/?">Temporary Link</option>
+      <option value="https://bdziaul.github.io/chat/?">𝕋𝕖𝕞𝕡𝕠𝕣𝕒𝕣𝕪 𝕃𝕚𝕟𝕜</option>
       <option value="http://103.12.205.23:7070/omni/index.do">২৩. রংপুর জোন</option>
       <option value="http://103.12.205.22:7070/omni/index.do">২২. রাজশাহী জোন</option>
       <option value="http://103.12.205.24:7070/omni/index.do">২৪. ঢাকা জোন</option>
@@ -228,7 +235,7 @@ footer a:hover{color:#ff6600;}
       <option value="http://103.12.205.35:7070/omni/index.do">৩৫. বরিশাল জোন</option>
       <option value="http://103.12.205.24:7070/omni/index.do">২৪. হেড অফিস</option>
     </select>
-    <button class="open-btn" onclick="openZone()">Open Automation</button>
+    <button onclick="openZone()">Open Automation</button>
   </div>
 
   <!-- Clickable Links -->

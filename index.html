@@ -208,34 +208,6 @@ footer a:hover{color:#ff6600;}
   select, .open-btn {width:100%;font-size:14px;}
   body {padding-top:230px;} 
 }
-
-/* --- MOUSE TAG ADDED --- */
-#mouseTag{
-  position:fixed;
-  left:0;
-  top:0;
-  transform: translate(-50%,-120%);
-  pointer-events:none; /* important so it doesn't block clicks */
-  font-weight:700;
-  font-size:14px;
-  color:rgba(0,0,0,0.28); /* light black */
-  padding:6px 8px;
-  border-radius:6px;
-  backdrop-filter: none;
-  transition: opacity 220ms ease, transform 160ms ease;
-  opacity:0;
-  z-index:2000;
-  white-space:nowrap;
-}
-#mouseTag.show{
-  opacity:1;
-}
-#mouseTag.stopped{
-  transform: translate(-50%,-150%) scale(1.05);
-}
-@media (max-width:800px){
-  #mouseTag{ font-size:13px; }
-}
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -248,9 +220,6 @@ footer a:hover{color:#ff6600;}
     <div class="visitor">ভিজিটের সংখ্যা: <span id="visitorCount">0</span></div>
   </div>
 </header>
-
-<!-- Mouse Tag element (added) -->
-<div id="mouseTag">Zia</div>
 
 <div class="container">
   <!-- Automation -->
@@ -286,7 +255,7 @@ footer a:hover{color:#ff6600;}
 
   <!-- Weblinks -->
   <div class="box"><h2><a href="https://mail.uddipan.org:8443/" class="link-title" onclick="openNewTab(event)">ই-মেইল / ওয়েবমেইল</a></h2><span>Zimbra: Open-Source, Enterprise E-mail & Collaboration Platform With E-mail, Calendar, Contacts, File Sharing & Chat</span></div>
-  <div class="box"><h2><a href="http://103.134.88.46/hr" class="link-title" onclick="openNewTab(event)">মানবসম্পদ ব্যবস্থাপনা</a></h2><span>UDDIPAN HR: Administration, Work Time, Payroll, Attendance, Leave, Self Service, Separation Mgt. & Reports</span></div>
+  <div class="box"><h2><a href="http://103.134.88.46/hr" class="link-title" onclick="openNewTab(event)">মানবসম্পদ ব্যবস্থাপনা</a></h2><span>UDDIPAN HR: Administration, Work Time, Payroll, Attendance, Leave, Self Service, Employee Profile, Separation Mgt. & Reports</span></div>
   <div class="box"><h2><a href="http://103.12.205.37/uddipanonline/" class="link-title" onclick="openNewTab(event)">উদ্দীপন অনলাইন</a></h2><span>Asset, Budget, Transaction, OTP, Omni Support, RM Monitoring & Report</span></div>
   <div class="box"><h2><a href="http://103.12.205.37/dashboard/" class="link-title" onclick="openNewTab(event)">উদ্দীপন ড্যাশবোর্ড</a></h2><span>MFP, Customer Feedback, Performer, Trend & Report</span></div>
   <div class="box"><h2><a href="http://103.12.205.37/itmonitoringtools/" class="link-title" onclick="openNewTab(event)">আইটি মনিটরিং</a></h2><span>Support Request, Purchase, Servicing Form, Report</span></div>
@@ -357,66 +326,94 @@ document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('selectstart', e => e.preventDefault());
 document.addEventListener('copy', e => e.preventDefault());
 document.addEventListener('cut', e => e.preventDefault());
-
-/* --- MOUSE TAG LOGIC (added) --- */
-/*
- Behavior:
- - follows the cursor while moving (faint "Zia")
- - when mouse stops (no mousemove for `stopDelay` ms) it adds class 'stopped' (slightly moves/zooms)
- - fades out after `hideAfter` ms of stop
- - pointer-events:none so it doesn't interfere with your copy-protection or clicks
-*/
-(function(){
-  const tag = document.getElementById('mouseTag');
-  if(!tag) return;
-
-  let moveTimer = null;
-  let hideTimer = null;
-  const stopDelay = 350; // ms to consider "stopped"
-  const hideAfter = 2200; // ms after stopped to hide
-
-  function showAt(x,y){
-    // position slightly above cursor
-    tag.style.left = x + 'px';
-    tag.style.top = y + 'px';
-    tag.classList.add('show');
-    tag.classList.remove('stopped');
-    // clear any hide timer while moving
-    if(hideTimer){ clearTimeout(hideTimer); hideTimer = null; }
-  }
-
-  function markStoppedAndAutoHide(){
-    tag.classList.add('stopped');
-    // schedule hide
-    if(hideTimer) clearTimeout(hideTimer);
-    hideTimer = setTimeout(()=> {
-      tag.classList.remove('show','stopped');
-      hideTimer = null;
-    }, hideAfter);
-  }
-
-  window.addEventListener('mousemove', function(e){
-    // show and move tag
-    showAt(e.clientX, e.clientY);
-    // debounce to detect stop
-    if(moveTimer) clearTimeout(moveTimer);
-    moveTimer = setTimeout(()=> {
-      markStoppedAndAutoHide();
-      moveTimer = null;
-    }, stopDelay);
-  }, {passive:true});
-
-  // Also show on touch (mobile) when touching
-  window.addEventListener('touchstart', function(e){
-    const t = e.touches[0];
-    if(t) showAt(t.clientX, t.clientY);
-  }, {passive:true});
-  window.addEventListener('touchmove', function(e){
-    const t = e.touches[0];
-    if(t) showAt(t.clientX, t.clientY);
-  }, {passive:true});
-})();
 </script>
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zia Mouse Idle Example</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #74ABE2, #5563DE);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    /* Zia Popup Style */
+    #zia-popup {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      font-size: 22px;
+      padding: 12px 25px;
+      border-radius: 12px;
+      z-index: 9999;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mouse Idle Test</h1>
+  <p>মাউস না নড়লে ৫ সেকেন্ড পর "Zia" দেখা যাবে</p>
+
+  <script>
+    let idleTimer;
+    const idleTimeLimit = 5000; // ৫ সেকেন্ড
+
+    // পুরনো Zia লেখা মুছে ফেলার ফাংশন
+    function removeZia() {
+      const ziaElement = document.getElementById("zia-popup");
+      if (ziaElement) ziaElement.remove();
+    }
+
+    // Zia দেখানোর ফাংশন
+    function showZia() {
+      removeZia(); // আগেরটা থাকলে মুছে দাও
+      const ziaDiv = document.createElement("div");
+      ziaDiv.id = "zia-popup";
+      ziaDiv.textContent = "Zia";
+      document.body.appendChild(ziaDiv);
+    }
+
+    // idle timer reset ফাংশন
+    function resetIdleTimer() {
+      clearTimeout(idleTimer);
+      removeZia(); // মাউস নড়লেই Zia হাইড হয়ে যাবে
+      idleTimer = setTimeout(showZia, idleTimeLimit);
+    }
+
+    // মাউস নড়লেই timer reset হবে
+    document.addEventListener("mousemove", resetIdleTimer);
+
+    // শুরুতেই চালাও
+    resetIdleTimer();
+  </script>
 </body>
 </html>
+
